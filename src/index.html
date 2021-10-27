@@ -1,30 +1,70 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Screen Recorder</title>
-    <!-- <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.17/dist/tailwind.min.css"> -->
-    <link rel="stylesheet" href="tailwind.css">
-    <link rel="stylesheet" href="index.css">
 
-    <script defer src="render.js"></script>
-  </head>
-  <body>
+<head>
+  <meta charset="UTF-8">
+  <title>Screen Recorder</title>
+  <!-- <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.17/dist/tailwind.min.css"> -->
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="titlebar.css">
+  <link rel="stylesheet" href="tailwind.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <script defer src="render.js"></script>
+</head>
+
+<body>
+  <header id="titlebar">
+    <div id="drag-region">
+      <div id="window-title">
+        <span>Screen Recorder</span>
+      </div>
+      <div id="window-controls">
+
+        <div class="button" id="min-button">
+          <img class="icon"
+            srcset="icons/min-w-10.png 1x, icons/min-w-12.png 1.25x, icons/min-w-15.png 1.5x, icons/min-w-15.png 1.75x, icons/min-w-20.png 2x, icons/min-w-20.png 2.25x, icons/min-w-24.png 2.5x, icons/min-w-30.png 3x, icons/min-w-30.png 3.5x"
+            draggable="false" />
+        </div>
+
+        <div class="button" id="close-button">
+          <img class="icon"
+            srcset="icons/close-w-10.png 1x, icons/close-w-12.png 1.25x, icons/close-w-15.png 1.5x, icons/close-w-15.png 1.75x, icons/close-w-20.png 2x, icons/close-w-20.png 2.25x, icons/close-w-24.png 2.5x, icons/close-w-30.png 3x, icons/close-w-30.png 3.5x"
+            draggable="false" />
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <div id="main">
     <h2 class="text-4xl font-bold">Auax Clip Recorder</h2>
     <p>Start by clicking the <b>Record</b> button.</p>
 
-    
-    <video class="my-5 max-h-96	"></video>
-    <div class="control-buttons flex-auto flex space-x-3">
-      <button class="w-1/2 items-center justify-center rounded-lg bg-gray-900 text-white text-base font-semibold px-6 py-2" type="button" id="startBtn">Start</button>
-      <button class="w-1/2 items-center justify-center rounded-lg bg-pink-100 text-pink-700 text-base font-semibold px-6 py-2" type="button" id="stopBtn">Stop</button>
+
+    <div class="video-container">
+      <video class="my-5 h-full"></video>
+    </div>
+    <div class="control-buttons flex-auto flex space-x-3 mt-3">
+      <button
+        class="w-1/2 items-center justify-center rounded-sm bg-gray-900 text-white text-base font-semibold px-6 py-2"
+        type="button" id="startBtn">Start</button>
+      <button
+        class="w-1/2 items-center justify-center rounded-sm bg-pink-100 text-pink-700 text-base font-semibold px-6 py-2"
+        type="button" id="stopBtn">Stop</button>
     </div>
 
-    <hr class="my-5"/>
+    <!-- <hr class="my-5" /> -->
 
     <div class="flex justify-center">
-      <button id="videoSelectBtn" class="w-full items-center justify-center rounded-lg bg-gray-100 text-gray-400 text-base px-6 py-2">Choose a video source</button>
+      <button id="videoSelectBtn" class="w-full items-center justify-center rounded-sm bg-gray-100 
+        text-gray-700 text-base font-semibold px-6 py-2 mt-3">
+        Choose a video source
+      </button>
     </div>
+  </div>
+</body>
 
-  </body>
 </html>

@@ -1,4 +1,5 @@
-const { app, BrowserWindow, webContents } = require('electron');
+const { app } = require('electron');
+const { BrowserWindow } = require("electron-acrylic-window");
 const path = require('path');
 const remote = require('@electron/remote/main');
 remote.initialize()
@@ -8,16 +9,32 @@ if (require('electron-squirrel-startup')) { // eslint-disable-line global-requir
   app.quit();
 }
 
+let vibrancyOptions = {
+  theme: 'light',
+  effect: 'acrylic',
+  useCustomWindowRefreshMethod: true,
+  maximumRefreshRate: 60,
+  disableOnBlur: false,
+}
+
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 800,
+    width: 600,
     height: 600,
+    vibrancy: vibrancyOptions,
+    frame: false,
+    // transparent: true,
+    // backgroundColor: 'ffffff77',
+    resizable: false,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
     }
   });
+
+  mainWindow.setVibrancy(vibrancyOptions);
+
 
   remote.enable(mainWindow.webContents);
 

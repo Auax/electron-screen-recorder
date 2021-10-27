@@ -1,7 +1,44 @@
 const { desktopCapturer } = require('electron');
-const { Menu, dialog } = require('@electron/remote');
+const remote = require('@electron/remote')
+const { Menu, dialog } = remote;
 const { writeFile } = require('fs');
 const { start } = require('repl');
+
+////////////////////////
+// TITLEBAR
+////////////////////////
+
+const win = remote.getCurrentWindow();
+
+// When document has loaded, initialise
+document.onreadystatechange = (event) => {
+    if (document.readyState == "complete") {
+        handleWindowControls();
+    }
+};
+
+window.onbeforeunload = (event) => {
+    /* If window is reloaded, remove win event listeners
+    (DOM element listeners get auto garbage collected but not
+    Electron win listeners as the win is not dereferenced unless closed) */
+    win.removeAllListeners();
+}
+
+function handleWindowControls() {
+    // Make minimise/maximise/restore/close buttons work when they are clicked
+    document.getElementById('min-button').addEventListener("click", event => {
+        win.minimize();
+    });
+
+    document.getElementById('close-button').addEventListener("click", event => {
+        win.close();
+    });
+}
+
+
+////////////////////////
+// VIDEO
+////////////////////////
 
 // Config
 const videoType = "video/webm; codecs=vp9";
@@ -74,7 +111,7 @@ async function getVideoSources() {
 
 // Change the videoSource window to record
 async function selectSource(source) {
-    videoSelectBtn.innerText = source.name;
+    videoSelectBtn.innerText = String(source.name).length > 30 ? source.name.slice(0, 30) + "..." : source.name;
 
     const constraints = {
         audio: false,
@@ -120,3 +157,4 @@ async function handleStop(e) {
         writeFile(filePath, buffer, () => console.log('Video saved successfully!'));
     }
 }
+
