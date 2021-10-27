@@ -59,6 +59,7 @@ videoSelectBtn.onclick = getVideoSources;
 startBtn.onclick = e => {
     try {
         if (mediaRecorder.state === "inactive") {
+            startBtn.innerText = "Recording...";
             // Only record when the state is inactive
             mediaRecorder.start();
         }
@@ -68,6 +69,7 @@ startBtn.onclick = e => {
 stopBtn.onclick = e => {
     try {
         if (mediaRecorder.state === "recording") {
+            startBtn.innerText = "Start...";
             // Only stop recording when the state is Recording
             mediaRecorder.stop();
         }
