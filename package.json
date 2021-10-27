@@ -1,8 +1,8 @@
 {
   "name": "cliprecorder",
-  "productName": "cliprecorder",
+  "productName": "Auax Clip Recorder",
   "version": "1.0.0",
-  "description": "My Electron application description",
+  "description": "Clip recorder by auax",
   "main": "src/index.js",
   "scripts": {
     "start": "electron-forge start",
@@ -14,7 +14,7 @@
   "keywords": [],
   "author": {
     "name": "Ibai Farina",
-    "email": "ibaifo8@gmail.com"
+    "email": "auax.dev@gmail.com"
   },
   "license": "MIT",
   "config": {
