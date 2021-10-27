@@ -69,7 +69,7 @@ startBtn.onclick = e => {
 stopBtn.onclick = e => {
     try {
         if (mediaRecorder.state === "recording") {
-            startBtn.innerText = "Start...";
+            startBtn.innerText = "Start";
             // Only stop recording when the state is Recording
             mediaRecorder.stop();
         }
