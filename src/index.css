@@ -37,11 +37,14 @@ p {
 }
 
 .video-container {
-  height: 320px;
-  /* min-height: 300px; */
+  height: 315px;
+  background-color: rgba(68, 68, 68, 0.2)
 }
 
-/* video {
-  max-height: 300px !important;
-  height: 300px;
-} */
+#startBtn {
+  background-color: rgba(15, 15, 15, 0.7);
+}
+
+#stopBtn {
+  background-color: rgba(255, 255, 255, 0.5);
+}

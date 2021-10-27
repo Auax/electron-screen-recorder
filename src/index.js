@@ -10,7 +10,7 @@ if (require('electron-squirrel-startup')) { // eslint-disable-line global-requir
 }
 
 let vibrancyOptions = {
-  theme: 'light',
+  theme: 'dark',
   effect: 'acrylic',
   useCustomWindowRefreshMethod: true,
   maximumRefreshRate: 60,

@@ -61,7 +61,6 @@ startBtn.onclick = e => {
         if (mediaRecorder.state === "inactive") {
             // Only record when the state is inactive
             mediaRecorder.start();
-            toggleStartBtn("bg-red-400", "bg-gray-900");
         }
     } catch (e) { console.warn(e); } // Catch Exception
 }
@@ -71,24 +70,9 @@ stopBtn.onclick = e => {
         if (mediaRecorder.state === "recording") {
             // Only stop recording when the state is Recording
             mediaRecorder.stop();
-            toggleStartBtn("bg-red-400", "bg-gray-900");
         }
     } catch (e) { console.warn(e); } // Catch Exception
 };
-
-const toggleStartBtn = (classOne, classTwo) => {
-    // Only if it's recording
-    if (mediaRecorder.state == "recording") {
-        startBtn.classList.remove(classTwo);
-        startBtn.classList.add(classOne);
-        startBtn.innerText = ("Recording...");
-
-    } else { // Not recording
-        startBtn.classList.remove(classOne);
-        startBtn.classList.add(classTwo);
-        startBtn.innerText = ("Start");
-    }
-}
 
 // Get the available video sources
 async function getVideoSources() {
